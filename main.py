@@ -2,12 +2,15 @@
 import os
 import discord
 from dotenv import load_dotenv
+import googletrans as gTrans
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN') # Get the bot's Discord token from our .env file
 
 intents = discord.Intents.all() # Enable all intents (members list, presence info etc.)
-client = discord.Client(intents=intents) # Initialize client with all intents
+client = discord.Client(intents=intents) # Initialize client with all intents, 
+translator = gTrans.Translator() # The main translator class
+langs = gTrans.LANGUAGES
 
 @client.event
 async def on_ready(): # This is called when a connection to Discord is achieved
